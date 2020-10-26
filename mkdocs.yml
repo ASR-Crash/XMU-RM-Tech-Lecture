@@ -14,6 +14,6 @@ nav:
     - YOLOv3从理论到实践: YOLOv3-theory-to-practice.md
 - RM2021:
 
-theme:readthedocs
+theme: readthedocs
 site_author: Crash
 copyright: Copyright © 2020 ASR-Crash, maintained by XMU-ROBOT Operation Group
