@@ -106,23 +106,25 @@ $$
 
 **总损耗：**
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image044.png)（2-1-5）
-
+$$
+P_D=P_{CON}+P_{SW\_OPEN}+P_{SW\_CLOSE}=0.1148+(0.0065+0.0085)×10^{-3}≈0.1148W\quad(2-1-5)
+$$
 **计算二极管的损耗：**
 
 这里以二极管的最大损耗为准：
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image046.png)    （2-1-6）
-
+$$
+P_D=V_F·I_F·(1-D)=1×1.75×(1-0.75)=0.4375W\quad(2-1-6)
+$$
 其中VF为导通压降，IF为导通电流，D为占空比
 
 **计算电感的损耗：**
 
 **电感的铜损：**
-
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image048.png)       （2-1-7）
-
-其中![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image050.png)为导通电流，![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image052.png)为电感直流电阻
+$$
+P_{Cu}=I_F^2·DCR=1.752×0.11≈0.3369W\quad(2-1-7)
+$$
+其中IF为导通电流，DCR为电感直流电阻
 
 **电感的铁损：**
 
@@ -130,23 +132,30 @@ $$
 
 **假设电路工作在CCM（电流连续）模式下，仍然以占空比中间值计算，则**
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image054.png) （2-1-8）
+$$
+励磁B_{PP}^+=\frac{(U_i-U_o )·D·T}{N·Ae}=\frac{(24-21)×0.875×1×10^{-3}}{28×(31-19)×13×10^{-4}}≈6.0096×10^{-3}Wb\quad(2-1-8)
+$$
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image056.png)  （2-1-9）
+$$
+退磁B_{PP}^-=\frac{U_o\cdot (1-D)·T}{N·Ae}=\frac{21×0.125×1×10^{-3}}{28×(31-19)×13×10^{-4}}≈6.0096×10^{-3}Wb\quad(2-1-9)
+$$
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image058.png)    （2-1-10）
+$$
+P_{Fe}=B_{PP}^2·f=(6.0096×10^{-3})^2×1000≈0.0361W\quad(2-1-10)
+$$
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image060.png)为磁通变化量，![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image062.png)为占空比，![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image064.png)为周期，![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image066.png)为匝数，![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image068.png)为磁芯横截面积，![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image070.png)，![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image072.png)分别为输入电压和输出电压，![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image074.png)为频率
+$B_{PP}^2$为磁通变化量，D为占空比，T为周期，N为匝数，$A_e$为磁芯横截面积，$U_i,U_o$分别为输入电压和输出电压，$f$为频率
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image076.png)      （2-1-11）
-
+$$
+P_D=P_{Cu}+P_{Fe}=0.3369+0.0361=0.3730W\quad(2-1-11)
+$$
 综上，可知二极管的损耗是最大的，是由其不可忽略的导通压降带来的。
 
 但，这不意味着其它两个元件的损耗也是可以忽略的，我必须认识到，这里的频率只有1kHz，属于低频。
 
-根据MOS管计算损耗的公式可知，其损耗会随着开关频率的升高而升高，具体体现在开通损耗![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image016.png)和关断损耗![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image018.png)，虽然现在这两个值可以忽略不计，但我要往高频化方向发展时，这两个量会变得相当可观。
+根据MOS管计算损耗的公式可知，其损耗会随着开关频率的升高而升高，具体体现在开通损耗$P_{SW\_OPEN}$和关断损耗$P_{SW\_CLOSE}$，虽然现在这两个值可以忽略不计，但我要往高频化方向发展时，这两个量会变得相当可观。
 
-根据电感计算损耗的公式，同样可知，其损耗也会随频率的升高而升高。庆幸的是，根据文献[1]，铁损在占空比![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image062.png)大于0.5的情况下损耗低于小于0.5的情况。
+根据电感计算损耗的公式，同样可知，其损耗也会随频率的升高而升高。庆幸的是，根据文献[1]，铁损在占空比D大于0.5的情况下损耗低于小于0.5的情况。
 
 <table>
     <tr>
@@ -176,9 +185,7 @@ $$
 
 ②提高开关频率，可以减小电感体积，提高能量密度，改善动态响应。（换用外径20mm的电感，原来的为31mm。）
 
-③采用软开关技术，减小由提高频率带来的开关损耗增加的问题。（尚未考虑周全，且
-
-计划先提升至10kHz，不算高频。）
+③采用软开关技术，减小由提高频率带来的开关损耗增加的问题。（尚未考虑周全，且计划先提升至10kHz，不算高频。）
 
 ---
 
@@ -188,73 +195,91 @@ $$
 
 DC-DC转换电路外围电感选型需要考虑以下几个参数：
 
-**电感量**![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image084.png)**：**![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image086.png)越大，储能能力越强，纹波越小，所需的滤波电容也就小。但是L越大，通常要求电感尺寸也会变大，![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image010.png)增加，导致DC-DC效率降低，相应的电感成本也会增加；
+**电感量$L$**：L越大，储能能力越强，纹波越小，所需的滤波电容也就小。但是L越大，通常要求电感尺寸也会变大，DCR增加，导致DC-DC效率降低，相应的电感成本也会增加；
 
-**自谐频率**![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image088.png)**：**由于电感中存在寄生电容，使得电感存在一个自谐振频率。超过此f0是，电感表现为电容效应，低于此f0，电感才表现为电感效应（阻抗随频率增大而增加）；
+**自谐频率$f_0$**：由于电感中存在寄生电容，使得电感存在一个自谐振频率。超过此$f_0$时，电感表现为电容效应，低于此$f_0$，电感才表现为电感效应（阻抗随频率增大而增加）；
 
-**直流电阻**![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image090.png)**：**指产品电极之间所用漆包线的总的直流电阻，根据W=I2R，![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image010.png)可造成能量损耗， 降低DC-DC效率，也是导致电感发热的主要原因；
+**直流电阻$DCR$**：指产品电极之间所用漆包线的总的直流电阻，根据$W=I^2R$，DCR可造成能量损耗， 降低DC-DC效率，也是导致电感发热的主要原因；
 
-**交流电阻**![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image092.png)**：**指电感量在指定频率下的电阻值，主要由电感线圈的直流电阻（交流下的集肤效应）、磁芯损耗以及介电损耗等组成，![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image094.png)越大，![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image096.png)值越小；
+**交流电阻$R_{AC}$**：指电感量在指定频率下的电阻值，主要由电感线圈的直流电阻（交流下的集肤效应）、磁芯损耗以及介电损耗等组成，$R_{AC}$越大，Q越小；
 
-**饱和电流**![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image098.png)**：**通常指电感量下降30%时对应的![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image100.png)电流值；
+**饱和电流$I_{sat}$**：通常指电感量下降30%时对应的DC电流值；
 
-**温升电流**![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image102.png)**：**通常指是电感表面温度上升40℃时的等效电流值；
+**温升电流$I_{rms}$**：通常指是电感表面温度上升40℃时的等效电流值；
 
-​    这里我主要考虑![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image104.png)，![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image010.png)，![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image106.png)和![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image108.png)，优先选择![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image086.png)，后三个主要和所用线的线径有关。
+这里我主要考虑$L,DCR,I_{sat},I_{rms}$，优先选择$L$，后三个主要和所用线的线径有关。
 
 **2.2.1电感**
 
 **电感值选用规则和计算公式：**
 
-   当MOS管打开时，电感电流线性上升，当MOS管关断时，电感电流线性下降，电感电流最大和最小值之差为电感纹波电流，该值也可以用输出负载电流乘以一个电流纹波系数![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image110.png)表示，即：
+   当MOS管打开时，电感电流线性上升，当MOS管关断时，电感电流线性下降，电感电流最大和最小值之差为电感纹波电流，该值也可以用输出负载电流乘以一个电流纹波系数r表示，即：
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image112.png)         （2-2-1）
+$$
+ΔiL=\frac{(U_i-U_o )·D}{L_{临界}·f}=I_{out}·r\quad(2-2-1)
+$$
+r一般在 0.3~0.5 之间。这里，我引入了一个重要的参数电流纹波系数r。为什么在算电感量之前要引入该参数？因为我要明确告诉后来人，这个参数远比电感值本身重要。
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image110.png)一般在 0.3~0.5 之间。这里，我引入了一个重要的参数电流纹波系数![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image114.png)。为什么在算电感量之前要引入该参数？因为我要明确告诉后来人，这个参数远比电感值本身重要。
-
-电流纹波系数![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image114.png)（参考文献[3]）：
+电流纹波系数r（参考文献[3]）：
 
 **定义：**
+$$
+r=\frac{∆I}{I_L}≡2×\frac{I_{AC}}{I_{DC}}\quad(2-2-2) 
+$$
+式（2-2-2）表示了电感电流的交流分量与直流分量的几何比例。其中$\Delta I=2\times I_{AC}$，一旦r确定，其他的所有参数几乎都能确定，因此，r值一定要清晰理解，仔细选择。
 
-​           ![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image116.png)       （2-2-2）
-
-式（2-2-2）表示了电感电流的交流分量与直流分量的几何比例。其中![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image118.png)，一旦![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image110.png)确定，其他的所有参数几乎都能确定，因此，![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image110.png)值一定要清晰理解，仔细选择。
-
-电流纹波率![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image120.png)只适用于连续导通模式，有效值范围为0~2。显然，![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image122.png)时，电感无穷大，电流无波动，![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image124.png)时，转换器处于临界导通模式。我们当然希望输出的电流和电压都能平稳，所以，![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image126.png)值的取值便更偏向于取小。（![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image126.png)并非越小越好）
+电流纹波率r只适用于连续导通模式，有效值范围为0~2。显然，r=0时，电感无穷大，电流无波动，r=2时，转换器处于临界导通模式。我们当然希望输出的电流和电压都能平稳，所以，r值的取值便更偏向于取小。（r并非越小越好）
 
 ​    在功率变换的计算中，我们通常用伏秒积表示电感在开关管开通关断过程中能量守恒。将式（2-2-3）代入式（2-2-2），得式（2-2-4）（2-2-5）：
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image128.png)              （2-2-3）
+$$
+u=L\frac{di}{dt}\quad(2-2-3)
+$$
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image130.png)(所有拓扑)  （2-2-4）
+$$
+r=\frac{∆I}{I_L}=\frac{E·t}{L·I_L}≡\frac{V_{ON}·D}{L·I_L·f}≡\frac{V_{OFF}·(1-D)}{L·I_L·f}（所有拓扑）\quad(2-2-4)
+$$
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image132.png)         （2-2-5）
+$$
+L=\frac{V_{ON}·D}{r·I_L·f}\space 或\space L·I_L=\frac{E·t}{r}\quad(2-2-5)
+$$
 
-其中![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image134.png)为电感电流，![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image136.png)为开关管开通时的电感电压，![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image138.png)为关断时电感电压
+其中$I_L$为电感电流，$V_{ON}$为开关管开通时的电感电压，$V_{OFF}$为关断时电感电压
 
-最后，说明为何这个系数如此重要——因为它是基础量。实际情况中，![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image086.png)的取值由工况，开关频率，甚至是拓扑本身决定的。因此无法直接计算![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image086.png)。但是存在![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image126.png)值的一般设计经验，并已被广泛应用。
+最后，说明为何这个系数如此重要——因为它是基础量。实际情况中，L的取值由工况，开关频率，甚至是拓扑本身决定的。因此无法直接计算L。但是存在r值的一般设计经验，并已被广泛应用。
 
-任何情况下，![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image126.png)值都在0.3~0.5之间，其通常最优值为0.4，但不绝对，我就选了0.2。原因：电感尺寸没办法继续缩小了，纹波率太大反而增大滤波电容体积。（注：内容繁多，这只是相当简单的介绍，攫取了其中能快速解决问题的知识。）
+任何情况下，r值都在0.3~0.5之间，其通常最优值为0.4，但不绝对，我就选了0.2。原因：电感尺寸没办法继续缩小了，纹波率太大反而增大滤波电容体积。（注：内容繁多，这只是相当简单的介绍，攫取了其中能快速解决问题的知识。）
 
-按照式（2-2-5）选择电感值，这里![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image140.png)为最大占空比计算值，对于BUCK电路，存在固有的最大占空比![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image142.png)，实际计算时选择两者中的较小值。
+按照式（2-2-5）选择电感值，这里$D_{max}=U_o/U_{i_MIN}$
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image144.png)    （2-2-6）
+为最大占空比计算值，对于BUCK电路，存在固有的最大占空比$D_{max}$，实际计算时选择两者中的较小值。
+$$
+L_{min}=\frac{(U_{i\_MAX}-U_o)·D_max)}{I_L·r·f}=\frac{(25-18)×18}{2.2×0.3×23.5×10×10^3 }≈1.219mH\quad(2-2-6)
+$$
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image146.png)        （2-2-7）
+$$
+I_{Lpeak}=I_L·(1+\frac{r}{2})=7×(1+\frac{0.2}{2})=7.7A\quad(2-2-7)
+$$
 
-以上电感值是计算值最小值，随之得到的饱和电流![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image148.png)和峰值电流![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image150.png)是最小值。按照工程上的要求，考虑到市面上的电感的标称值的误差通常在±20%，还考虑到当电感电流达到饱和电流时，电感值会下降25%，即：
-
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image152.png)      （2-2-8）
-
-因此，我们只要选用比![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image154.png)大的，满足峰值电流![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image150.png)条件的电感。最后我决定选用2mH 1.2线的功率电感（DCR=11.55mΩ）。
+以上电感值是计算值最小值，随之得到的饱和电流$I_{Lrms}$和峰值电流$I_{Lpeak}$是最小值。按照工程上的要求，考虑到市面上的电感的标称值的误差通常在±20%，还考虑到当电感电流达到饱和电流时，电感值会下降25%，即：
+$$
+L_{chosen}=\frac{L_{min}}{0.8×0.75}=\frac{1.219}{0.8×0.75}≈2.032mH\quad(2-2-8)
+$$
+因此，我们只要选用比$L_{chosen}$大的，满足峰值电流$I_{Lpeak}$条件的电感。最后我决定选用2mH 1.2线的功率电感（DCR=11.55mΩ）。
 
 **电感损耗计算：**
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image156.png)       （2-2-9）
+$$
+P_{Cu}=I_L^2·DCR=5^2×11.55=288.75mW\quad(2-2-9)
+$$
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image158.png)     （2-2-10）
+$$
+P_{Fe}=B_{PP}^2·f=(14.9148×10^{-3})^2×10^4≈2.2245W\quad(2-2-10)
+$$
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image160.png)      （2-2-11）
+$$
+P_D=P_{Cu}+P_{Fe}=0.28875+2.2245=2.5133W\quad(2-2-11)
+$$
 
 此外，我还推荐TI公司的一款软件Power Stage Designer Tool 4.0，该软件提供了相当全面的电路图。TI毕竟是业界的龙头，开关电源做得很好，很多资料都可以参考他们的。
 
@@ -264,13 +289,13 @@ DC-DC转换电路外围电感选型需要考虑以下几个参数：
 
 **输出电容参数分析：**
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image162.png)很大的话，可以保证输出电压近似恒定，但是![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image162.png)很大会导致体积和成本更大。因此实际中根据容许的输出电压纹波来选择![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image162.png)的值。
+$C_o$很大的话，可以保证输出电压近似恒定，但是$C_o$很大会导致体积和成本更大。因此实际中根据容许的输出电压纹波来选择$C_o$的值。
 
-设计时总是按照电感电流谐波全部进入![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image162.png)，恒定分量进入负载（如果带阻性负载，在闭环电路的控制下，输出电压恒定，确实是这样的）。电感电流![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image164.png)的谐波进入电容，由电容的寄生电阻![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image166.png)、寄生电感![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image168.png)，和![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image162.png)值决定电压纹波的。
+设计时总是按照电感电流谐波全部进入$C_o$，恒定分量进入负载（如果带阻性负载，在闭环电路的控制下，输出电压恒定，确实是这样的）。电感电流$i$的谐波进入电容，由电容的寄生电阻$ESR$、寄生电感$ESL$，和$C_O$值决定电压纹波的。
 
 ![6](6.jpg)
 
- 对于低于500kHz的谐波，![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image168.png)产生的电压纹波可以忽略。因此，输出电容中由![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image166.png)和![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image162.png)决定纹波电压分量。由![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image166.png)产生的纹波分量正比于电感电流纹波分量，由![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image162.png)决定的纹波分量与流过电容的电流积分成正比。这两个分量相位是不同的。
+ 对于低于500kHz的谐波，$ESL$产生的电压纹波可以忽略。因此，输出电容中由$ESR$和$C_O$决定纹波电压分量。由$ESR$产生的纹波分量正比于电感电流纹波分量，由$C_O$决定的纹波分量与流过电容的电流积分成正比。这两个分量相位是不同的。
 
 <table>
     <tr>
@@ -282,9 +307,9 @@ DC-DC转换电路外围电感选型需要考虑以下几个参数：
 
 <center><strong>滤波电容电流电压示意（图左）电感电流示意（图右）
 
-​    对于BUCK，BOOST和BUCK-BOOST，其输出电容的最大有效值电流恰好都对应同一电压，而且该电压就是一般电感设计步骤中采用的电压值。即，对应BUCK的![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image174.png)，BOOST和BUCK-BOOST的![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image176.png)。因此，可直接使用由一般电感设计步骤的计算值。
+​    对于BUCK，BOOST和BUCK-BOOST，其输出电容的最大有效值电流恰好都对应同一电压，而且该电压就是一般电感设计步骤中采用的电压值。即，对应BUCK的$U_{i\_max}$，BOOST和BUCK-BOOST的$U_{i\_min}$。因此，可直接使用由一般电感设计步骤的计算值。
 
-​    另外，由于电容的![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image166.png)值对开关电源来说是一个很重要的值，过大会造成严重的电压尖峰，电容发热，电容失效等问题。通常，普通铝电解电容的![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image166.png)会达到欧姆级别。这里，我均选用贴片固态铝电解电容的![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image166.png)值（50mΩ：大致包括导线）计算。
+​    另外，由于电容的$ESR$值对开关电源来说是一个很重要的值，过大会造成严重的电压尖峰，电容发热，电容失效等问题。通常，普通铝电解电容的$ESR$会达到欧姆级别。这里，我均选用贴片固态铝电解电容的$ESR$值（50mΩ：大致包括导线）计算。
 
 **输出电容参数计算：**
 
@@ -292,63 +317,90 @@ DC-DC转换电路外围电感选型需要考虑以下几个参数：
 
 ​    （1）最大输出纹波峰峰值小于输出电压的1%，即
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image178.png)
+$$
+V_{o\_RIPPLE\_MAX}=1\%·U_{o\_MAX}=1\%×23.5=0.235V
+$$
+​    （2）负载突增时，可接受的最大电压下垂量为：$∆V_{DROP}=1.175V$
 
-​    （2）负载突增时，可接受的最大电压下垂量为：![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image180.png)
-
-​    （3）负载突增时，可接受的最大超调量为：![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image182.png)
+​    （3）负载突增时，可接受的最大超调量为：$V_{OVERSHOOT}=1.175V$
 
 ​    先计算选用的电感后的电流纹波率（式（2-2-9））和输出电流纹波峰峰值（式（2-2-10））：
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image184.png)   （2-2-9）
+$$
+r_{Ui\_MAX}=\frac{(U_{i\_MAX}-U_o )·D_{max}}{I_o·L_{chosen}·f}=\frac{(25-18)×18}{2.2×2×10^{-3}×23.5×10×10^3}≈0.12\quad(2-2-9)
+$$
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image186.png)    （2-2-10）
+$$
+I_{o\_RIPPLE\_MAX}=I_o·r_{Ui\_MAX}=2.2×0.12=0.2640A\quad(2-2-10)
+$$
 
 得出电容寄生电阻ESR最大值，基于最大输出纹波：
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image188.png)     （2-2-11）
+$$
+ESR≤\frac{V_{o\_RIPPLE\_MAX}}{I_o·r_{Ui\_MAX}} =\frac{0.235}{2.2×0.12}=0.8902Ω\quad(2-2-11)
+$$
+根据图2，电感电流在平均值以上的部分为滤波电容充电，其面积为$\Delta S$，输出电容充电量$\Delta Q$，根据能量守恒，$\Delta S=\Delta Q$，通过式（2-2-12），（2-2-13），得到式（2-2-14）：
 
-根据图2，电感电流在平均值以上的部分为滤波电容充电，其面积为![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image190.png)，输出电容充电量![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image192.png)，根据能量守恒，![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image194.png)，通过式（2-2-12），（2-2-13），得到式（2-2-14）：
+$$
+ΔS=\frac{1}{8f}·I_{o\_RIPPLE\_MAX}\quad(2-2-12)
+$$
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image196.png)        （2-2-12）
+$$
+ΔQ=C_o·V_{o\_RIPPLE\_MAX}\quad(2-2-13)
+$$
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image198.png)         （2-2-13）
+$$
+C_{o_1}≥\frac{1}{8f}·\frac{I_{o\_RIPPLE\_MAX}}{V_{o\_RIPPLE\_MAX}}=\frac{1}{8×10^4 }×\frac{2.2×0.12}{0.235}=14.0425μF\quad(2-2-14)
+$$
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image200.png)  （2-2-14）
-
-​    同时，当负载发生变化时，假定输出电压需要2~3个开关周期返回到正常输出值，这段时间内不希望电压跌落至某一值。由![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image202.png)，基于最大电压下垂量，可得式（2-2-15）：
-
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image204.png)       （2-2-15）
-
+同时，当负载发生变化时，假定输出电压需要2~3个开关周期返回到正常输出值，这段时间内不希望电压跌落至某一值。由$I=C\frac{di}{dt}$，基于最大电压下垂量，可得式（2-2-15）：
+$$
+C≥\frac{I_o·∆t}{V_{o\_RIPPLE\_MAX}}=\frac{2·T·I_o}{∆V_{DROP}}=\frac{2·I_o}{∆V_{DROP}·f}\quad(2-2-15)
+$$
 此处的下垂量与额外负载需求相关，因为正常负载需求在每个周期里都会被满足，电压不会下降。所以，此处的电流实际上对应增加的负载。
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image206.png)     （2-2-16）
+$$
+C_{o\_2}≥\frac{2·∆I_o}{∆V_{DROP}·f}=\frac{2×\frac{5}{2}}{1.175×10^4}=425.5319uF\quad(2-2-16)
+$$
+最后，基于最大超调量，采用另一个标准：负载从最大负载$I_o$突变至0，所有的电感能量倾泻到输出电容中，升压到$V_X$，同样，根据能量守恒，由式（2-2-17）推导出式（2-2-18）。
 
-最后，基于最大超调量，采用另一个标准：负载从最大负载![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image208.png)突变至0，所有的电感能量倾泻到输出电容中，升压到![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image210.png)，同样，根据能量守恒，由式（2-2-17）推导出式（2-2-18）。
+$$
+\frac{1}{2}·C·(V_x^2-V_o^2 )=\frac{1}{2}·L·I_o^2\quad(2-2-17)
+$$
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image212.png)        （2-2-17）
+$$
+C≥\frac{L·I_o^2}{(V_x+V_o)·(V_x-V_o)}≈\frac{L·I_o^2}{2·V_o·∆V_{OVERSHOOT}}\quad(2-2-18)
+$$
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image214.png)       （2-2-18）
-
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image216.png)       （2-2-19）
+$$
+C_{o_3}≥\frac{2×10^{-3}×5^2}{2×24×1.175}≈886.5248uF\quad(2-2-19)
+$$
 
 **输出电容损耗计算：**
 
 输出电容有效值电流计算：
 
-​    ![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image218.png)     （2-2-20）
+$$
+I_{Co_RMS_MAX}=I_o·\frac{r_{Ui\_MAX}}{\sqrt{12}}=2.2×0.12/\sqrt{12}=76.2102mA\quad(2-2-20)
+$$
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image220.png)     （2-2-21）
+$$
+I_{Co\_RMS\_MIN}=I_o·\frac{r_{Ui\_MIN}}{\sqrt{12}}=2.2×0.096/\sqrt{12}=60.9682mA\qard(2-2-21)
+$$
 
 功耗计算：
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image222.png)  （2-2-22）
+$$
+P_{Co\_MAX}=I_{Co\_RMS\_MAX}^2·ESR=76.2102^2×0.05=0.2904mW\qard(2-2-22)
+$$
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image224.png)  （2-2-23）
+$$
+P_{Co\_MIN}=I_{Co\_RMS\_MIN}^2·ESR=60.9682^2×0.05=0.1859mW\quad(2-2-23)
+$$
 
 输出电容损耗取最恶劣情况做参考。
 
-综上，理论的输出电容值![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image162.png)为400uF，值得说明的一点，以上的计算均为理论推算，参数也有选取上的偏差。但是，不妨碍我们选电容，理论为400uF，①我们可以选470uF的电容，②也可以选用两个220uF并联，甚至是多个并联，这里，我推荐后一种，这样就算是高![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image166.png)电容，两个并联也可以有效减小![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image166.png)值，同时耐压值比最大电压高出20%~50%。
+综上，理论的输出电容值$C_o$为400uF，值得说明的一点，以上的计算均为理论推算，参数也有选取上的偏差。但是，不妨碍我们选电容，理论为400uF，①我们可以选470uF的电容，②也可以选用两个220uF并联，甚至是多个并联，这里，我推荐后一种，这样就算是高$ESR$电容，两个并联也可以有效减小$ESR$值，同时耐压值比最大电压高出20%~50%。
 
 我选择330uF 50V贴片固态电解电容，三个并联。
 
@@ -356,33 +408,54 @@ DC-DC转换电路外围电感选型需要考虑以下几个参数：
 
 ​    输入电容一般要保证输入电压纹波峰峰值保持在输入电压的5%~10%以下，因此输入电容也会影响BUCK电路的工作稳定性。
 
-​    由于我们是使用锂电池，所以这个输入电压纹波值较小。不过还是给出一个值：要求输入电压纹波峰峰值为2%，同时也是防止电压纹波从输出端口传递到输入端口造成干扰。假设输入电压最高时，纹波最大。将式（2-2-24）（2-2-25）求得输入电压纹波峰峰值![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image226.png)和最大输入电压下，对应输出电压的占空比![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image228.png)代入式（2-2-26）。
+​    由于我们是使用锂电池，所以这个输入电压纹波值较小。不过还是给出一个值：要求输入电压纹波峰峰值为2%，同时也是防止电压纹波从输出端口传递到输入端口造成干扰。假设输入电压最高时，纹波最大。将式（2-2-24）（2-2-25）求得输入电压纹波峰峰值$V_{RIPP\_PP\_MAX}$和最大输入电压下，对应输出电压的占空比$D_{IEADL\_UI\_MAX}$代入式（2-2-26）。
+$$
+V_{RIPP\_PP\_MAX}=2\%·U_{i\_MAX}=2\%×25=0.5V\quad(2-2-24)
+$$
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image230.png)      （2-2-24）
+$$
+D_{IDEAL\_Ui\_MAX}=\frac{U_O}{U_{i\_MAX}} =18/25=0.72\quad(2-2-25)
+$$
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image232.png)         （2-2-25）
-
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image234.png)
-
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image236.png)    （2-2-26）
+$$
+\begin{aligned}
+C_i
+& ≥\frac{I_o·D_{IDEAL\_Ui\_MAX}·(1-D_{IDEAL\_Ui\_MAX})}{f·\{V_{RIPP\_PP\_MAX}-ESR·I_o·[1+(0.5·r_{Ui_MAX}]\}}\\
+& =\frac{2.2×0.72×(1-0.72)}{10^4×\{0.5-0.05×2.2×[1+(0.5×0.12)]\}}≈115.6808uF
+\end{aligned}\quad(2-2-26)
+$$
 
 **输入电容损耗计算：**
 
 输入电容有效值电流计算：
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image238.png)
+$$
+\begin{aligned}
+I_{Ci\_RMS\_MAX}
+& =I_o·\sqrt{D_{IDEAL\_Ui\_MAX}·(1-D_{IDEAL\_Ui\_MAX}+\frac{r_{Ui\_MIN}^2}{12})}\\
+& =5×\sqrt{0.96×(1-0.96+0.015^2/12)}\\
+& =0.9800A\qquad(2-2-27)
+\end{aligned}
+$$
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image240.png)    （2-2-27）
+$$
+\begin{aligned}
+I_{Ci\_RMS\_MIN}
+& =I_o·\sqrt{D_{IDEAL\_Ui\_MIN}·(1-D_{IDEAL\_Ui\_MIN}+\frac{r_{Ui\_MAX}^2}{12})}\\
+& =2.2×\sqrt{0.7660×(1-0.7660+0.12^2/12)}\\
+& =0.9338A\qquad(2-2-28)
+\end{aligned}
+$$
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image242.png)
+其中$r_{Ui\_MAX}$与计算$C_o$时的$r_{D\_MAX}$是一样的，$r_{Ui\_MIN}$与$r_{D\_MIN}$同理（上述两式对应两种$U_o$）
 
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image244.png) （2-2-28）
+$$
+P_{Ci\_MAX}=I_{Ci\_RMS\_MAX}^2·ESR=0.9800^2×0.05=48.0200mW\quad(2-2-29)
+$$
 
-其中![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image246.png)与计算![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image162.png)时的![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image248.png)是一样的，![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image250.png)与![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image252.png)同理（上述两式对应两种![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image072.png)）
-
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image254.png)  （2-2-29）
-
-![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image256.png)  （2-2-30）
+$$
+P_{Ci\_MIN}=I_{Ci\_RMS\_MIN}^2·ESR=0.9338^2×0.05=43.5991mW\quad(2-2-30)
+$$
 
 输入电容损耗取最恶劣情况做参考。
 
@@ -390,7 +463,7 @@ DC-DC转换电路外围电感选型需要考虑以下几个参数：
 
 电容的种类繁多，开关电源电路推荐多层式陶瓷电容（MLCC），固态电容，钽电容，铝电解电容。推荐度按顺序递减，自己查阅相关参数便会明白原因。
 
-​    最后，必须要说明的一点，对于BUCK和BUCK-BOOST电路，输入电容的最大有效值电流出现在![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image258.png)，对于BOOST电路，这个值是1，但是工程上占空比不超过0.9。因此，上述计算的取值都是偏向![img](file:///C:/Users/Crash/AppData/Local/Temp/msohtmlclip1/01/clip_image258.png)。
+​    最后，必须要说明的一点，对于BUCK和BUCK-BOOST电路，输入电容的最大有效值电流出现在D=0.5，对于BOOST电路，这个值是1，但是工程上占空比不超过0.9。因此，上述计算的取值都是偏向D=0.5。
 
 以上便是超级电容主要的设计思路和理论分析过程。
 
