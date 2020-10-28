@@ -1,6 +1,7 @@
 site_name: 厦门大学·RoboMaster·技术讲座<img src='https://img.wenhairu.com/images/2020/10/11/CksbD.png'>
 site_favicon: favicon.ico
 nav:
+- 图片导航: navigation.md
 - RM2020:
     - 雷达全场定位: radar-location.md
     - 电机基本知识: motor-basic-knowledge.md
@@ -13,7 +14,7 @@ nav:
     - 人机工程分析: ergonomic-analysis.md
     - YOLOv3从理论到实践: YOLOv3-theory-to-practice.md
 - RM2021:
-    - Remain to be organized: index.md
+    - Remain to be organized: remain.md
 theme: readthedocs
 site_author: Crash
-copyright: Copyright © 2020 ASR-Crash, maintained by XMU-ROBOT Operation Group
+copyright: Copyright © 2020 ASR-Crash, maintained by XMU-ROBOT Management Layer.

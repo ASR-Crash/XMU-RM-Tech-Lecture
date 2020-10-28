@@ -1,5 +1,13 @@
 ## 全向轮运动学
 
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$']]},
+        messageStyle: "none"
+    });
+</script>
+
 ### 全向轮
 
 轮式移动机器人可分为两大类：全向和非全向的。全方位轮式移动机器人通常采用omniwheel或mecanum轮子。Omniwheels和Mecanum的轮子不是被操纵的，而是被向前或向后驱动的。由于他们的小直径滚轮，omniwheels和mecanum轮在坚硬的，平坦的地面表现得最好。
@@ -223,7 +231,6 @@ $$
 ---
 
 <p align='right'><font color=gray><strong>作者：孙泽飞</strong></font></p>
-
 ---
 
 <img src='https://img.wenhairu.com/images/2020/10/18/CbAIj.png'  >
