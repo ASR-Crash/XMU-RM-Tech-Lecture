@@ -429,7 +429,7 @@ T = M/19 = 3.475/19 = 0.18N·m
 <p align='right'><font color=gray><strong>作者：田佳铭</strong></font></p>
 ---
 
-<img src='https://cdn.img.wenhairu.com/images/2020/10/18/CbAIj.png'  >
+<img src='https://img.wenhairu.com/images/2020/10/18/CbAIj.png'  >
 
 
 

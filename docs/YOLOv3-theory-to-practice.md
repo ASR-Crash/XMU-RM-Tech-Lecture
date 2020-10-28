@@ -158,8 +158,7 @@ YOLO v3的另一个改进是使用了Logistic函数代替Softmax函数，以处�
 ---
 
 <p align='right'><font color=gray><strong>作者：孙泽飞</strong></font></p>
-
 ---
 
-<img src='https://cdn.img.wenhairu.com/images/2020/10/18/CbAIj.png'  >
+<img src='https://img.wenhairu.com/images/2020/10/18/CbAIj.png'  >
 

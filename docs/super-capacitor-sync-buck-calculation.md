@@ -179,7 +179,8 @@ $$
 
 ---
 
-<center><strong>改进方案
+<center><strong>改进方案</strong></center>
+
 
 ①将电路替换为同步BUCK电路。控制难度会有所提升，但采用TI公司的一些器件可以达到稳定控制。（值得注意的是，同步电路并非完美，它在轻负载的情况下造成了不良的电路反应，即在高侧MOS管关断时，电感电流可能会倒流，但使用二极管不存在该问题，因此我选用的芯片有二极管仿真模式，价格也相对合理。）
 
@@ -191,7 +192,8 @@ $$
 
 #### 2.2主要参数计算
 
-<center><strong>同步BUCK电路参数计算：
+<center><strong>同步BUCK电路参数计算</strong></center>
+
 
 DC-DC转换电路外围电感选型需要考虑以下几个参数：
 
@@ -305,7 +307,8 @@ $C_o$很大的话，可以保证输出电压近似恒定，但是$C_o$很大会�
     </tr>
 </table>
 
-<center><strong>滤波电容电流电压示意（图左）电感电流示意（图右）
+<center><strong>滤波电容电流电压示意（图左）电感电流示意（图右）</strong></center>
+
 
 ​    对于BUCK，BOOST和BUCK-BOOST，其输出电容的最大有效值电流恰好都对应同一电压，而且该电压就是一般电感设计步骤中采用的电压值。即，对应BUCK的$U_{i\_max}$，BOOST和BUCK-BOOST的$U_{i\_min}$。因此，可直接使用由一般电感设计步骤的计算值。
 
@@ -490,7 +493,7 @@ BOOST变换器计算方法与BUCK变换器大同小异，这里暂不赘述。
 <p align='right'><font color=gray><strong>作者：陈李萱</strong></font></p>
 ---
 
-<img src='https://cdn.img.wenhairu.com/images/2020/10/18/CbAIj.png'  >
+<img src='https://img.wenhairu.com/images/2020/10/18/CbAIj.png'  >
 
 
 
